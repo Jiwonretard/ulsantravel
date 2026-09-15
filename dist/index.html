@@ -93,10 +93,17 @@
             <button type="button" data-prompt="울산의 역사와 문화를 차분히 보고 싶어요"># 문화</button>
           </div>
 
-          <button class="generate-button" type="submit">
-            <span>울산 여행 코스 만들기</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m13.2 5.2 6.1 6.1a1 1 0 0 1 0 1.4l-6.1 6.1a1 1 0 0 1-1.4-1.4l4.4-4.4H5a1 1 0 1 1 0-2h11.2l-4.4-4.4a1 1 0 1 1 1.4-1.4Z" /></svg>
-          </button>
+          <div class="generate-row">
+            <button class="generate-button" type="submit">
+              <span>울산 여행 코스 만들기</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m13.2 5.2 6.1 6.1a1 1 0 0 1 0 1.4l-6.1 6.1a1 1 0 0 1-1.4-1.4l4.4-4.4H5a1 1 0 1 1 0-2h11.2l-4.4-4.4a1 1 0 1 1 1.4-1.4Z" /></svg>
+            </button>
+            <a class="selected-cafe" id="selected-cafe" href="#" target="_blank" rel="noreferrer">
+              <span>이번 스무디 가게</span>
+              <strong id="selected-cafe-name"></strong>
+              <small id="selected-cafe-menu"></small>
+            </a>
+          </div>
         </form>
       </section>
 
@@ -149,10 +156,10 @@
             </div>
             <div class="smoothie-content">
               <span class="required-badge">필수 일정</span>
-              <h3>블루베리 스무디</h3>
-              <p>페퍼커피 밀리미터 · 울산 북구 중산서로 26</p>
-              <div><strong>현재 확인 메뉴</strong><b>5,500원</b></div>
-              <a href="https://www.diningcode.com/profile.php?rid=JunSMm2orDjj" target="_blank" rel="noreferrer">메뉴 정보 확인 <span>↗</span></a>
+              <h3 id="featured-cafe-name"></h3>
+              <p id="featured-cafe-details"></p>
+              <div><strong id="featured-cafe-menu"></strong><b id="featured-cafe-price"></b></div>
+              <a id="featured-cafe-link" href="#" target="_blank" rel="noreferrer">메뉴 정보 확인 <span>↗</span></a>
             </div>
           </article>
         </div>

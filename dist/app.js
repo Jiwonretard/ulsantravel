@@ -1,13 +1,52 @@
 const mapUrl = (name) => `https://map.naver.com/p/search/${encodeURIComponent(name)}`;
 
-const smoothieStop = {
-  name: "페퍼커피 밀리미터",
-  description: "잠깐 쉬어가는 달콤한 약속. 현재 메뉴에서 확인되는 블루베리 스무디를 즐겨보세요.",
-  address: "울산 북구 중산서로 26 101호",
-  tags: ["블루베리 스무디", "필수 코스"],
-  map: mapUrl("울산 페퍼커피 밀리미터"),
-  smoothie: true,
-};
+const smoothieCafes = [
+  {
+    name: "페퍼커피 밀리미터",
+    menu: "블루베리스무디",
+    price: "6,000원",
+    address: "울산 북구 중산서로 26 101호",
+    source: "https://app.passorder.co.kr/normal/1ada9bf1-b5f2-49ed-8e43-c1b12075f68e/menus",
+  },
+  {
+    name: "블루샥 삼산센트럴자이점",
+    menu: "블루베리 요거트 스무디",
+    price: "4,800원",
+    address: "울산 남구 삼산로 231 1층 124호",
+    source: "https://app.passorder.co.kr/normal/5271d0da-93f3-4abe-b0b4-ccf756ea8b82/menus",
+  },
+  {
+    name: "식빵싸부",
+    menu: "블루베리스무디",
+    price: "4,500원",
+    address: "울산 남구 삼산로 287",
+    source: "https://www.diningcode.com/profile.php?rid=hxSvEAINF6cH",
+  },
+  {
+    name: "카페 하록",
+    menu: "블루베리스무디",
+    price: "가격 확인",
+    address: "울산 북구 신기12길 19 1층",
+    source: "https://www.diningcode.com/profile.php?rid=oHGtSuR7tbDl",
+  },
+  {
+    name: "요거프레소 울산선암점",
+    menu: "블루베리 요거트스무디(R)",
+    price: "5,800원",
+    address: "울산 남구 두왕로190번길 46",
+    source: "https://app.passorder.co.kr/normal/b6958519-c904-4154-880f-64751f02e837/menus",
+  },
+  {
+    name: "카페일리터 울산동구점",
+    menu: "블루베리요거트스무디",
+    price: "4,300원",
+    address: "울산 동구 학문로 53 1층",
+    source: "https://app.passorder.co.kr/normal/91e7ea63-642d-473a-91cb-82d50959f5b9/menus",
+  },
+];
+
+const smoothieSlot = Object.freeze({ smoothieSlot: true });
+let currentSmoothieCafe = smoothieCafes[Math.floor(Math.random() * smoothieCafes.length)];
 
 const routeSets = {
   ocean: {
@@ -29,7 +68,7 @@ const routeSets = {
         tags: ["바다", "느린 여행"],
         map: mapUrl("울산 주전몽돌해변"),
       },
-      smoothieStop,
+      smoothieSlot,
       {
         name: "정자항",
         description: "항구의 잔잔한 풍경과 노을을 보며 하루를 마무리해요.",
@@ -58,7 +97,7 @@ const routeSets = {
         tags: ["대나무숲", "힐링"],
         map: mapUrl("울산 십리대숲"),
       },
-      smoothieStop,
+      smoothieSlot,
       {
         name: "달천철장",
         description: "철의 도시 울산이 시작된 야외 유적에서 한적한 산책을 이어가요.",
@@ -87,7 +126,7 @@ const routeSets = {
         tags: ["가족 산책", "휴식"],
         map: mapUrl("울산대공원"),
       },
-      smoothieStop,
+      smoothieSlot,
       {
         name: "정자항",
         description: "바닷바람이 부는 항구에서 가족 사진과 함께 하루를 마무리해요.",
@@ -116,7 +155,7 @@ const routeSets = {
         tags: ["미술", "원도심"],
         map: mapUrl("울산시립미술관"),
       },
-      smoothieStop,
+      smoothieSlot,
       {
         name: "달천철장",
         description: "철 생산의 역사가 남은 야외 유적에서 울산의 또 다른 뿌리를 만나요.",
@@ -145,7 +184,7 @@ const routeSets = {
         tags: ["옹기", "문화"],
         map: mapUrl("울산 외고산 옹기마을"),
       },
-      smoothieStop,
+      smoothieSlot,
       {
         name: "정자항",
         description: "긴 드라이브 끝, 북쪽 항구 풍경을 바라보며 천천히 마무리해요.",
@@ -167,7 +206,7 @@ const routeSets = {
         tags: ["강변", "산책"],
         map: mapUrl("태화강 국가정원"),
       },
-      smoothieStop,
+      smoothieSlot,
       {
         name: "울산대교 전망대",
         description: "도시와 산업단지의 불빛, 울산대교가 어우러진 야경을 바라봐요.",
@@ -195,6 +234,14 @@ const resultTitle = document.querySelector("#result-title");
 const resultSummary = document.querySelector("#result-summary");
 const routeMeta = document.querySelector("#route-meta");
 const generateButton = document.querySelector(".generate-button span");
+const selectedCafe = document.querySelector("#selected-cafe");
+const selectedCafeName = document.querySelector("#selected-cafe-name");
+const selectedCafeMenu = document.querySelector("#selected-cafe-menu");
+const featuredCafeName = document.querySelector("#featured-cafe-name");
+const featuredCafeDetails = document.querySelector("#featured-cafe-details");
+const featuredCafeMenu = document.querySelector("#featured-cafe-menu");
+const featuredCafePrice = document.querySelector("#featured-cafe-price");
+const featuredCafeLink = document.querySelector("#featured-cafe-link");
 
 const companionLabels = {
   solo: "혼자",
@@ -219,6 +266,40 @@ function chooseRoute(text, companion, duration) {
   return "nature";
 }
 
+function toSmoothieStop(cafe) {
+  return {
+    ...cafe,
+    description: `메뉴에서 확인된 ${cafe.menu}를 마시며 잠깐 쉬어가요.`,
+    tags: [cafe.menu, "필수 일정"],
+    map: mapUrl(`울산 ${cafe.name}`),
+    smoothie: true,
+  };
+}
+
+function materializeStops(stops, cafe) {
+  return stops.map((stop) => stop.smoothieSlot ? toSmoothieStop(cafe) : stop);
+}
+
+function updateSmoothieCafe(cafe) {
+  currentSmoothieCafe = cafe;
+  selectedCafe.href = cafe.source;
+  selectedCafe.setAttribute("aria-label", `${cafe.name} ${cafe.menu} 메뉴 확인`);
+  selectedCafeName.textContent = cafe.name;
+  selectedCafeMenu.textContent = `${cafe.menu} · ${cafe.price}`;
+  featuredCafeName.textContent = cafe.name;
+  featuredCafeDetails.textContent = cafe.address;
+  featuredCafeMenu.textContent = cafe.menu;
+  featuredCafePrice.textContent = cafe.price;
+  featuredCafeLink.href = cafe.source;
+}
+
+function chooseRandomSmoothieCafe() {
+  const candidates = smoothieCafes.filter((cafe) => cafe !== currentSmoothieCafe);
+  const cafe = candidates[Math.floor(Math.random() * candidates.length)] || currentSmoothieCafe;
+  updateSmoothieCafe(cafe);
+  return cafe;
+}
+
 function stopsForDuration(stops, duration) {
   if (duration !== "half") return stops;
   const smoothie = stops.find((stop) => stop.smoothie);
@@ -232,10 +313,10 @@ function timelineIcon(isSmoothie) {
     : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a8 8 0 0 0-8 8c0 5.7 7 11.3 7.3 11.6a1 1 0 0 0 1.4 0C13 21.3 20 15.7 20 10a8 8 0 0 0-8-8Zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/></svg>';
 }
 
-function renderRoute(routeKey, duration, companion, transport) {
+function renderRoute(routeKey, duration, companion, transport, smoothieCafe = currentSmoothieCafe) {
   const selected = routeSets[routeKey];
   const config = durationConfig[duration];
-  const stops = stopsForDuration(selected.stops, duration);
+  const stops = stopsForDuration(materializeStops(selected.stops, smoothieCafe), duration);
 
   resultTitle.textContent = selected.title;
   resultSummary.textContent = `${selected.summary} 선택한 ${config.label}, ${companionLabels[companion]}, ${transport === "car" ? "자동차" : "대중교통"} 조건을 반영했습니다.`;
@@ -272,6 +353,7 @@ form.addEventListener("submit", (event) => {
   const transport = data.get("transport");
   const prompt = String(data.get("tripPrompt") || "").trim();
   const routeKey = chooseRoute(prompt, companion, duration);
+  const smoothieCafe = chooseRandomSmoothieCafe();
 
   result.hidden = false;
   result.classList.remove("revealed");
@@ -281,7 +363,7 @@ form.addEventListener("submit", (event) => {
   result.scrollIntoView({ behavior: "smooth", block: "start" });
 
   window.setTimeout(() => {
-    renderRoute(routeKey, duration, companion, transport);
+    renderRoute(routeKey, duration, companion, transport, smoothieCafe);
     loadingState.hidden = true;
     generateButton.textContent = "울산 여행 코스 만들기";
     result.classList.add("revealed");
@@ -312,6 +394,8 @@ document.querySelector(".voice-button").addEventListener("click", () => {
 window.addEventListener("load", () => {
   document.body.classList.add("loaded");
 });
+
+updateSmoothieCafe(currentSmoothieCafe);
 
 function registerWebMcpTool() {
   const context = document.modelContext;
@@ -350,15 +434,18 @@ function registerWebMcpTool() {
         document.querySelector("#companion").value = companion;
         document.querySelector("#transport").value = transport;
         const routeKey = chooseRoute(prompt, companion, duration);
+        const smoothieCafe = chooseRandomSmoothieCafe();
         result.hidden = false;
         loadingState.hidden = true;
-        renderRoute(routeKey, duration, companion, transport);
+        renderRoute(routeKey, duration, companion, transport, smoothieCafe);
         result.classList.add("revealed");
 
-        const visibleStops = stopsForDuration(routeSets[routeKey].stops, duration);
+        const visibleStops = stopsForDuration(materializeStops(routeSets[routeKey].stops, smoothieCafe), duration);
         return {
           title: routeSets[routeKey].title,
           stops: visibleStops.map((stop) => stop.name),
+          blueberrySmoothieCafe: smoothieCafe.name,
+          blueberrySmoothieMenu: smoothieCafe.menu,
           blueberrySmoothieIncluded: visibleStops.some((stop) => stop.smoothie),
         };
       },
