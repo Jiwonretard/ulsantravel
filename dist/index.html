@@ -8,7 +8,7 @@
       name="description"
       content="하고 싶은 일을 입력하면 실제 울산 명소와 블루베리 스무디를 포함한 여행 코스를 추천합니다."
     />
-    <title>울산, 오늘의 결 — AI 여행 코스</title>
+    <title>울산 AI 여행 코스</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,14 +20,8 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="울산, 오늘의 결 홈">
-        <span class="brand-mark" aria-hidden="true">
-          <span class="brand-logo-image"></span>
-        </span>
-        <span class="brand-copy">
-          <strong>울산, 오늘의 결</strong>
-          <span>with 울산작은고래지킴이협회</span>
-        </span>
+      <a class="brand" href="#top" aria-label="울산작은고래지킴이협회 홈">
+        <span class="brand-full-logo" aria-hidden="true"></span>
       </a>
       <nav aria-label="주요 메뉴">
         <a href="#planner">코스 만들기</a>
@@ -38,25 +32,17 @@
     <main id="top">
       <section class="intro" aria-labelledby="intro-title">
         <div class="intro-copy">
-          <p class="eyebrow"><span></span> ULSAN CURATED BY AI</p>
-          <h1 id="intro-title">오늘, 울산에서<br /><em>어떤 시간을</em> 보내고 싶나요?</h1>
+          <h1 id="intro-title">울산 여행 코스<br /><em>만들기</em></h1>
           <p class="intro-description">
-            원하는 분위기와 동행을 알려주세요. 실제 울산의 장소만 골라 이동 흐름까지 맞춘 하루를 만들어요.
+            원하는 여행을 입력하면 실제 울산 명소로 일정을 추천합니다. 모든 코스에 블루베리 스무디 일정이 포함됩니다.
           </p>
-          <div class="trust-row" aria-label="서비스 특징">
-            <span><i aria-hidden="true">✓</i> 실제 장소</span>
-            <span><i aria-hidden="true">✓</i> 취향 맞춤</span>
-            <span><i aria-hidden="true">✓</i> 스무디 포함</span>
-          </div>
         </div>
 
         <form class="planner-card" id="planner" aria-labelledby="planner-title">
           <div class="planner-heading">
             <div>
-              <p class="mini-label">AI TRIP PLANNER</p>
-              <h2 id="planner-title">하고 싶은 걸 적어주세요</h2>
+              <h2 id="planner-title">여행 조건 입력</h2>
             </div>
-            <span class="sparkle" aria-hidden="true">✦</span>
           </div>
 
           <label class="prompt-label" for="tripPrompt">원하는 여행</label>
@@ -108,7 +94,7 @@
           </div>
 
           <button class="generate-button" type="submit">
-            <span>나만의 울산 코스 만들기</span>
+            <span>울산 여행 코스 만들기</span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m13.2 5.2 6.1 6.1a1 1 0 0 1 0 1.4l-6.1 6.1a1 1 0 0 1-1.4-1.4l4.4-4.4H5a1 1 0 1 1 0-2h11.2l-4.4-4.4a1 1 0 1 1 1.4-1.4Z" /></svg>
           </button>
         </form>
@@ -117,16 +103,15 @@
       <section class="result-shell" id="result" aria-live="polite" hidden>
         <div class="result-topline">
           <div>
-            <p class="eyebrow"><span></span> YOUR ULSAN ROUTE</p>
-            <h2 id="result-title">당신을 위한 울산의 하루</h2>
+            <h2 id="result-title">울산 여행 코스</h2>
             <p id="result-summary"></p>
           </div>
           <div class="route-meta" id="route-meta"></div>
         </div>
         <div class="loading-state" id="loading-state" hidden>
           <span class="loader-whale" aria-hidden="true">◒</span>
-          <strong>울산의 결을 고르는 중</strong>
-          <p>취향과 이동 흐름을 함께 살펴보고 있어요.</p>
+          <strong>여행 코스를 만드는 중</strong>
+          <p>장소와 이동 순서를 정리하고 있습니다.</p>
         </div>
         <ol class="timeline" id="timeline"></ol>
         <div class="route-note">
@@ -138,15 +123,13 @@
       <section class="places-section" id="places" aria-labelledby="places-title">
         <div class="section-heading">
           <div>
-            <p class="eyebrow"><span></span> REAL PLACES, REAL ULSAN</p>
-            <h2 id="places-title">코스에 담기는 울산</h2>
+            <h2 id="places-title">추천 장소</h2>
           </div>
           <p>울산시 관광 정보와 현재 확인 가능한 매장 정보를 바탕으로 구성했어요.</p>
         </div>
         <div class="place-grid">
           <article class="feature-place feature-place--photo">
             <div class="feature-content">
-              <span>바다의 울산</span>
               <h3>대왕암공원</h3>
               <p>소나무 숲을 지나 푸른 바다와 기암을 만나는 대표 해안 산책지</p>
               <a href="https://map.naver.com/p/search/%EB%8C%80%EC%99%95%EC%95%94%EA%B3%B5%EC%9B%90" target="_blank" rel="noreferrer">지도 보기 <b>↗</b></a>
@@ -154,7 +137,6 @@
           </article>
           <article class="feature-place feature-place--garden">
             <div class="feature-content">
-              <span>초록의 울산</span>
               <h3>태화강 국가정원</h3>
               <p>강바람과 대나무 그늘을 따라 천천히 걷기 좋은 도심 속 국가정원</p>
               <a href="https://map.naver.com/p/search/%ED%83%9C%ED%99%94%EA%B0%95%20%EA%B5%AD%EA%B0%80%EC%A0%95%EC%9B%90" target="_blank" rel="noreferrer">지도 보기 <b>↗</b></a>
@@ -166,7 +148,7 @@
               <div class="cup"><i></i><b></b></div>
             </div>
             <div class="smoothie-content">
-              <span class="required-badge">모든 코스에 꼭</span>
+              <span class="required-badge">필수 일정</span>
               <h3>블루베리 스무디</h3>
               <p>페퍼커피 밀리미터 · 울산 북구 중산서로 26</p>
               <div><strong>현재 확인 메뉴</strong><b>5,500원</b></div>
@@ -178,11 +160,7 @@
     </main>
 
     <footer>
-      <div class="footer-brand">
-        <span class="footer-logo"></span>
-        <div><strong>울산작은고래지킴이협회</strong><span>ULSAN TINY WHALE ASSOCIATION</span></div>
-      </div>
-      <p>울산의 좋은 하루를 오래 지켜가요.</p>
+      <div class="footer-full-logo" role="img" aria-label="울산작은고래지킴이협회"></div>
     </footer>
 
     <script src="./app.js"></script>

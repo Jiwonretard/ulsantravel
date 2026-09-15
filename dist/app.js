@@ -11,8 +11,8 @@ const smoothieStop = {
 
 const routeSets = {
   ocean: {
-    title: "파란 바다를 따라, 동쪽에서 북쪽으로",
-    summary: "탁 트인 해안 풍경과 사진 찍기 좋은 산책길을 중심으로 동선을 이었어요.",
+    title: "울산 바다 여행 코스",
+    summary: "대왕암공원에서 정자항까지 해안 명소를 순서대로 방문합니다.",
     label: "바다 · 산책",
     stops: [
       {
@@ -40,8 +40,8 @@ const routeSets = {
     ],
   },
   nature: {
-    title: "강바람과 초록 사이, 숨 고르는 하루",
-    summary: "많이 서두르지 않고 정원과 숲을 걷는 편안한 흐름으로 골랐어요.",
+    title: "울산 자연 여행 코스",
+    summary: "태화강 국가정원과 십리대숲을 중심으로 구성했습니다.",
     label: "자연 · 휴식",
     stops: [
       {
@@ -53,7 +53,7 @@ const routeSets = {
       },
       {
         name: "십리대숲",
-        description: "곧게 뻗은 대나무 사이로 난 길에서 시원한 숲의 결을 느껴보세요.",
+        description: "대나무 사이로 이어지는 산책길을 걸어보세요.",
         address: "울산 중구 태화동 107",
         tags: ["대나무숲", "힐링"],
         map: mapUrl("울산 십리대숲"),
@@ -69,8 +69,8 @@ const routeSets = {
     ],
   },
   family: {
-    title: "고래 이야기를 따라가는 가족 탐험",
-    summary: "아이와 함께 보고, 듣고, 걸으며 울산다운 기억을 남기는 코스예요.",
+    title: "울산 가족 여행 코스",
+    summary: "장생포 고래문화마을과 울산대공원을 포함한 가족 코스입니다.",
     label: "가족 · 고래",
     stops: [
       {
@@ -98,8 +98,8 @@ const routeSets = {
     ],
   },
   culture: {
-    title: "산업도시 너머, 울산의 시간을 읽는 길",
-    summary: "박물관과 미술, 오래된 도심 풍경을 차분하게 이어 보았어요.",
+    title: "울산 문화·역사 여행 코스",
+    summary: "울산박물관과 울산시립미술관을 중심으로 구성했습니다.",
     label: "문화 · 역사",
     stops: [
       {
@@ -127,8 +127,8 @@ const routeSets = {
     ],
   },
   sunrise: {
-    title: "햇살이 먼저 닿는 울산 남쪽 여행",
-    summary: "탁 트인 바다와 오래된 옹기 문화를 함께 만나는 드라이브 코스예요.",
+    title: "울산 남부 드라이브 코스",
+    summary: "간절곶과 외고산 옹기마을을 방문하는 드라이브 코스입니다.",
     label: "일출 · 드라이브",
     stops: [
       {
@@ -156,8 +156,8 @@ const routeSets = {
     ],
   },
   night: {
-    title: "빛이 번지는 강변과 전망의 저녁",
-    summary: "늦은 오후부터 시작해 노을과 울산의 야경을 차례로 만나는 코스예요.",
+    title: "울산 야경 여행 코스",
+    summary: "태화강 국가정원과 울산대교 전망대의 저녁 풍경을 포함합니다.",
     label: "노을 · 야경",
     stops: [
       {
@@ -177,7 +177,7 @@ const routeSets = {
       },
       {
         name: "일산해수욕장",
-        description: "밤바다를 따라 짧게 걸으며 울산의 하루를 정리해요.",
+        description: "일산해수욕장의 밤바다를 따라 짧게 걸어보세요.",
         address: "울산 동구 해수욕장10길 일대",
         tags: ["밤바다", "산책"],
         map: mapUrl("울산 일산해수욕장"),
@@ -238,7 +238,7 @@ function renderRoute(routeKey, duration, companion, transport) {
   const stops = stopsForDuration(selected.stops, duration);
 
   resultTitle.textContent = selected.title;
-  resultSummary.textContent = `${selected.summary} ${companionLabels[companion]} 움직이기 좋은 속도로 맞췄습니다.`;
+  resultSummary.textContent = `${selected.summary} 선택한 ${config.label}, ${companionLabels[companion]}, ${transport === "car" ? "자동차" : "대중교통"} 조건을 반영했습니다.`;
   routeMeta.replaceChildren();
   [config.label, companionLabels[companion], transport === "car" ? "자동차 추천" : "대중교통 중심", selected.label]
     .forEach((label) => {
@@ -283,7 +283,7 @@ form.addEventListener("submit", (event) => {
   window.setTimeout(() => {
     renderRoute(routeKey, duration, companion, transport);
     loadingState.hidden = true;
-    generateButton.textContent = "나만의 울산 코스 만들기";
+    generateButton.textContent = "울산 여행 코스 만들기";
     result.classList.add("revealed");
   }, 850);
 });

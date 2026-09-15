@@ -32,31 +32,21 @@ a { color: inherit; text-decoration: none; }
 
 .site-header {
   width: min(1180px, calc(100% - 48px));
-  height: 96px;
+  height: 118px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.brand { display: inline-flex; align-items: center; gap: 12px; }
-.brand-mark {
-  width: 44px;
-  height: 44px;
-  border: 1px solid #e0ecef;
-  border-radius: 13px;
-  overflow: hidden;
-  background: white;
-  position: relative;
+.brand { display: block; width: 270px; height: 106px; }
+.brand-full-logo, .footer-full-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url("./assets/association-logo.jpg") center center / 90% auto no-repeat;
+  mix-blend-mode: multiply;
 }
-.brand-logo-image, .footer-logo {
-  position: absolute;
-  inset: 0;
-  background: url("./assets/association-logo.jpg") center 27% / 285% auto no-repeat;
-}
-.brand-copy { display: flex; flex-direction: column; line-height: 1.25; }
-.brand-copy strong { font-size: 0.94rem; letter-spacing: -0.03em; }
-.brand-copy span { margin-top: 4px; font: 500 0.66rem/1 "DM Sans", sans-serif; color: #72909c; letter-spacing: 0.06em; }
 nav { display: flex; gap: 34px; font-size: 0.9rem; font-weight: 600; color: #496572; }
 nav a { transition: color 180ms ease; }
 nav a:hover { color: var(--cyan); }
@@ -270,13 +260,8 @@ textarea:focus { border-color: var(--aqua); background: white; box-shadow: 0 0 0
 .smoothie-content > div b { font: 600 0.82rem "DM Sans", sans-serif; }
 .smoothie-content > a { display: inline-block; margin-top: 12px; color: white; font-size: 0.77rem; font-weight: 700; }
 
-footer { min-height: 150px; padding: 42px max(24px, calc((100vw - 1180px) / 2)); display: flex; align-items: center; justify-content: space-between; background: #f1f8f9; border-top: 1px solid #e0edef; }
-.footer-brand { display: flex; align-items: center; gap: 12px; }
-.footer-logo { position: relative; display: block; width: 48px; height: 42px; background-size: 310% auto; background-position: center 25%; mix-blend-mode: multiply; }
-.footer-brand div { display: flex; flex-direction: column; }
-.footer-brand strong { font-size: 0.8rem; }
-.footer-brand span { color: #799099; font: 600 0.58rem "DM Sans", sans-serif; letter-spacing: .08em; }
-footer > p { color: #71878f; font-size: 0.78rem; }
+footer { min-height: 150px; padding: 24px max(24px, calc((100vw - 1180px) / 2)); display: flex; align-items: center; background: #f1f8f9; border-top: 1px solid #e0edef; }
+.footer-full-logo { width: 270px; height: 102px; }
 
 @media (max-width: 980px) {
   .intro { grid-template-columns: 1fr; gap: 44px; padding-top: 30px; }
@@ -287,9 +272,9 @@ footer > p { color: #71878f; font-size: 0.78rem; }
 }
 
 @media (max-width: 680px) {
-  .site-header { width: calc(100% - 32px); height: 78px; }
-  .brand-mark { width: 40px; height: 40px; }
-  .brand-copy span, nav { display: none; }
+  .site-header { width: calc(100% - 32px); height: 96px; }
+  .brand { width: 210px; height: 88px; }
+  nav { display: none; }
   .intro { width: calc(100% - 32px); min-height: auto; margin-top: 12px; padding: 30px 0 70px; gap: 38px; }
   .intro::before { width: 260px; height: 260px; right: -100px; top: -30px; }
   h1 { font-size: clamp(2.45rem, 13vw, 3.5rem); }
@@ -313,8 +298,7 @@ footer > p { color: #71878f; font-size: 0.78rem; }
   .place-grid { grid-template-columns: 1fr; }
   .feature-place { min-height: 330px; }
   .smoothie-place { grid-column: auto; grid-template-columns: 1fr; min-height: 450px; }
-  footer { flex-direction: column; align-items: flex-start; gap: 20px; }
-  footer > p { margin: 0; }
+  .footer-full-logo { width: 220px; height: 92px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
