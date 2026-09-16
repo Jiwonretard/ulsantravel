@@ -2,46 +2,125 @@ const mapUrl = (name) => `https://map.naver.com/p/search/${encodeURIComponent(na
 
 const smoothieCafes = [
   {
+    id: "pepper",
     name: "페퍼커피 밀리미터",
     menu: "블루베리스무디",
     price: "6,000원",
     address: "울산 북구 중산서로 26 101호",
+    type: "로컬 카페",
+    availability: "메뉴 확인",
+    position: [57, 18],
     source: "https://app.passorder.co.kr/normal/1ada9bf1-b5f2-49ed-8e43-c1b12075f68e/menus",
   },
   {
+    id: "blushaak",
     name: "블루샥 삼산센트럴자이점",
     menu: "블루베리 요거트 스무디",
     price: "4,800원",
     address: "울산 남구 삼산로 231 1층 124호",
+    type: "프랜차이즈",
+    availability: "메뉴 확인",
+    position: [51, 55],
     source: "https://app.passorder.co.kr/normal/5271d0da-93f3-4abe-b0b4-ccf756ea8b82/menus",
   },
   {
+    id: "breadboss",
     name: "식빵싸부",
     menu: "블루베리스무디",
     price: "4,500원",
     address: "울산 남구 삼산로 287",
+    type: "로컬 카페",
+    availability: "메뉴 확인",
+    position: [58, 60],
     source: "https://www.diningcode.com/profile.php?rid=hxSvEAINF6cH",
   },
   {
+    id: "harok",
     name: "카페 하록",
     menu: "블루베리스무디",
     price: "가격 확인",
     address: "울산 북구 신기12길 19 1층",
+    type: "로컬 카페",
+    availability: "메뉴 확인",
+    position: [48, 27],
     source: "https://www.diningcode.com/profile.php?rid=oHGtSuR7tbDl",
   },
   {
+    id: "yogerpresso",
     name: "요거프레소 울산선암점",
     menu: "블루베리 요거트스무디(R)",
     price: "5,800원",
     address: "울산 남구 두왕로190번길 46",
+    type: "프랜차이즈",
+    availability: "메뉴 확인",
+    position: [39, 77],
     source: "https://app.passorder.co.kr/normal/b6958519-c904-4154-880f-64751f02e837/menus",
   },
   {
+    id: "cafe1l",
     name: "카페일리터 울산동구점",
     menu: "블루베리요거트스무디",
     price: "4,300원",
     address: "울산 동구 학문로 53 1층",
+    type: "프랜차이즈",
+    availability: "메뉴 확인",
+    position: [80, 58],
     source: "https://app.passorder.co.kr/normal/91e7ea63-642d-473a-91cb-82d50959f5b9/menus",
+  },
+  {
+    id: "mega",
+    name: "메가MGC커피 울산달동사거리점",
+    menu: "블루베리요거트스무디",
+    price: "가격·판매 확인",
+    address: "울산 남구 중앙로 170-1",
+    type: "프랜차이즈",
+    availability: "지점별 판매 확인",
+    position: [42, 59],
+    source: "https://www.mega-mgccoffee.com/menu/menu.php",
+  },
+  {
+    id: "compose",
+    name: "컴포즈커피 울산신정푸르지오점",
+    menu: "블루베리 스무디",
+    price: "3,800원",
+    address: "울산 남구 팔등로 64-1",
+    type: "프랜차이즈",
+    availability: "메뉴 확인",
+    position: [34, 54],
+    source: "https://app.passorder.co.kr/normal/57d0b8f3-c9b3-44e9-8dae-91187fff11cc/menus",
+  },
+  {
+    id: "theventi",
+    name: "더벤티 울산달동점",
+    menu: "블루베리 요거트 스무디",
+    price: "3,900원",
+    address: "울산 남구 신정로 27",
+    type: "프랜차이즈",
+    availability: "메뉴 확인",
+    position: [45, 65],
+    source: "https://app.passorder.co.kr/normal/c25c2ad0-3650-4e38-9d1b-31f96ba10282/menus",
+  },
+  {
+    id: "paik",
+    name: "빽다방 울산타임스퀘어점",
+    menu: "블루베리요거트스무디",
+    price: "가격·판매 확인",
+    address: "울산 남구 수암로 138 1층 121호",
+    type: "프랜차이즈",
+    availability: "지점별 판매 확인",
+    position: [36, 68],
+    source: "https://paikdabang.com/menu/menu_drink/",
+  },
+  {
+    id: "hasamdong",
+    name: "하삼동커피 꽃바위점",
+    menu: "블루베리요거트스무디",
+    price: "4,200원",
+    address: "울산 동구 문현로 41",
+    type: "프랜차이즈",
+    availability: "메뉴 확인",
+    position: [84, 76],
+    source: "https://app.passorder.co.kr/normal/3bdec681-fa28-4ead-9585-bda2e2904165/menus",
   },
 ];
 
@@ -235,8 +314,11 @@ const resultSummary = document.querySelector("#result-summary");
 const routeMeta = document.querySelector("#route-meta");
 const generateButton = document.querySelector(".generate-button span");
 const selectedCafe = document.querySelector("#selected-cafe");
+const selectedCafeType = document.querySelector("#selected-cafe-type");
 const selectedCafeName = document.querySelector("#selected-cafe-name");
 const selectedCafeMenu = document.querySelector("#selected-cafe-menu");
+const cafeMap = document.querySelector("#cafe-map");
+const cafeMapCount = document.querySelector("#cafe-map-count");
 const featuredCafeName = document.querySelector("#featured-cafe-name");
 const featuredCafeDetails = document.querySelector("#featured-cafe-details");
 const featuredCafeMenu = document.querySelector("#featured-cafe-menu");
@@ -269,7 +351,9 @@ function chooseRoute(text, companion, duration) {
 function toSmoothieStop(cafe) {
   return {
     ...cafe,
-    description: `메뉴에서 확인된 ${cafe.menu}를 마시며 잠깐 쉬어가요.`,
+    description: cafe.availability === "메뉴 확인"
+      ? `메뉴에서 확인된 ${cafe.menu}를 마시며 잠깐 쉬어가요.`
+      : `프랜차이즈 메뉴의 ${cafe.menu}입니다. 이 지점은 방문 전에 판매 여부를 확인해주세요.`,
     tags: [cafe.menu, "필수 일정"],
     map: mapUrl(`울산 ${cafe.name}`),
     smoothie: true,
@@ -284,6 +368,7 @@ function updateSmoothieCafe(cafe) {
   currentSmoothieCafe = cafe;
   selectedCafe.href = cafe.source;
   selectedCafe.setAttribute("aria-label", `${cafe.name} ${cafe.menu} 메뉴 확인`);
+  selectedCafeType.textContent = `${cafe.type} · ${cafe.availability}`;
   selectedCafeName.textContent = cafe.name;
   selectedCafeMenu.textContent = `${cafe.menu} · ${cafe.price}`;
   featuredCafeName.textContent = cafe.name;
@@ -291,6 +376,40 @@ function updateSmoothieCafe(cafe) {
   featuredCafeMenu.textContent = cafe.menu;
   featuredCafePrice.textContent = cafe.price;
   featuredCafeLink.href = cafe.source;
+  cafeMap.querySelectorAll("[data-cafe-id]").forEach((marker) => {
+    const active = marker.dataset.cafeId === cafe.id;
+    marker.classList.toggle("active", active);
+    marker.setAttribute("aria-pressed", String(active));
+  });
+}
+
+function renderCafeMap() {
+  cafeMapCount.textContent = `${smoothieCafes.length}곳`;
+  cafeMap.innerHTML = `
+    <span class="map-district map-district--north">북구</span>
+    <span class="map-district map-district--center">중구</span>
+    <span class="map-district map-district--south">남구</span>
+    <span class="map-district map-district--east">동구</span>
+    ${smoothieCafes.map((cafe, index) => `
+      <button
+        class="cafe-marker"
+        type="button"
+        role="listitem"
+        data-cafe-id="${cafe.id}"
+        data-cafe-index="${index}"
+        style="--map-x: ${cafe.position[0]}%; --map-y: ${cafe.position[1]}%"
+        aria-label="${cafe.name}, ${cafe.menu}"
+        aria-pressed="false"
+        title="${cafe.name}"
+      >${index + 1}</button>
+    `).join("")}
+  `;
+
+  cafeMap.querySelectorAll("[data-cafe-index]").forEach((marker) => {
+    marker.addEventListener("click", () => {
+      updateSmoothieCafe(smoothieCafes[Number(marker.dataset.cafeIndex)]);
+    });
+  });
 }
 
 function chooseRandomSmoothieCafe() {
@@ -395,6 +514,7 @@ window.addEventListener("load", () => {
   document.body.classList.add("loaded");
 });
 
+renderCafeMap();
 updateSmoothieCafe(currentSmoothieCafe);
 
 function registerWebMcpTool() {
