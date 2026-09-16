@@ -104,16 +104,16 @@ h1 .wave-word {
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   h1 .wave-word {
     color: transparent;
-    background-color: var(--cyan);
-    background-image:
-      radial-gradient(ellipse 65% 44% at 50% 100%, rgba(188, 239, 246, .88) 0 48%, transparent 51%),
-      linear-gradient(180deg, #13abc2 0 58%, #087899 59% 76%, #073f5b 100%);
-    background-size: 1.8em .5em, 100% 100%;
-    background-position: -1.8em 74%, 0 0;
-    background-repeat: repeat-x, no-repeat;
+    background-color: #159bb3;
+    /* A seamless, shallow wave stays inside the stationary letters. */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='100' viewBox='0 0 240 100'%3E%3Cpath fill='%23096687' d='M0 53 C40 43 80 43 120 53 S200 63 240 53 V100 H0 Z'/%3E%3Cpath fill='none' stroke='%2357bed0' stroke-width='2' d='M0 53 C40 43 80 43 120 53 S200 63 240 53'/%3E%3C/svg%3E");
+    background-size: 3.2em 100%;
+    background-position: 0 0;
+    background-repeat: repeat-x;
     -webkit-background-clip: text;
     background-clip: text;
-    animation: titleWaveFill 7s linear infinite;
+    -webkit-text-fill-color: transparent;
+    animation: titleWaveFill 8s linear infinite;
     will-change: background-position;
   }
 }
@@ -129,8 +129,8 @@ h1 em::after {
   transform: rotate(-1deg);
 }
 @keyframes titleWaveFill {
-  from { background-position: -1.8em 74%, 0 0; }
-  to { background-position: 1.8em 74%, 0 0; }
+  from { background-position: 0 0; }
+  to { background-position: -3.2em 0; }
 }
 
 .trust-row { display: flex; gap: 18px; margin-top: 34px; color: #52727e; font-size: 0.84rem; font-weight: 600; }
@@ -357,5 +357,5 @@ footer { min-height: 150px; padding: 24px max(24px, calc((100vw - 1180px) / 2));
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-  h1 .wave-word { animation: none !important; background-position: 0 74%, 0 0; }
+  h1 .wave-word { animation: none !important; background-position: 0 0; }
 }
