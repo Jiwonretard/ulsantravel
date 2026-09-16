@@ -16,6 +16,12 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -110,8 +116,8 @@
                 <strong id="cafe-map-title">블루베리 스무디 지도</strong>
                 <span id="cafe-map-count"></span>
               </div>
-              <div class="cafe-map" id="cafe-map" role="list" aria-label="울산 블루베리 스무디 판매 카페"></div>
-              <p>핀을 누르면 가게와 메뉴를 확인할 수 있어요.</p>
+              <div class="cafe-map" id="cafe-map" aria-label="울산 블루베리 스무디 판매 카페 지도"></div>
+              <p>지도를 드래그하거나 +/− 버튼으로 확대·축소하세요. 핀을 누르면 메뉴가 보여요.</p>
             </section>
           </div>
         </form>
@@ -180,6 +186,11 @@
       <div class="footer-full-logo" role="img" aria-label="울산작은고래지킴이협회"></div>
     </footer>
 
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
     <script src="./app.js"></script>
   </body>
 </html>

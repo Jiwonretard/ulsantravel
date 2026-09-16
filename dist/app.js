@@ -9,7 +9,7 @@ const smoothieCafes = [
     address: "울산 북구 중산서로 26 101호",
     type: "로컬 카페",
     availability: "메뉴 확인",
-    position: [57, 18],
+    coordinates: [35.6530048, 129.3487878],
     source: "https://app.passorder.co.kr/normal/1ada9bf1-b5f2-49ed-8e43-c1b12075f68e/menus",
   },
   {
@@ -20,7 +20,7 @@ const smoothieCafes = [
     address: "울산 남구 삼산로 231 1층 124호",
     type: "프랜차이즈",
     availability: "메뉴 확인",
-    position: [51, 55],
+    coordinates: [35.5397435, 129.3493955],
     source: "https://app.passorder.co.kr/normal/5271d0da-93f3-4abe-b0b4-ccf756ea8b82/menus",
   },
   {
@@ -31,7 +31,7 @@ const smoothieCafes = [
     address: "울산 남구 삼산로 287",
     type: "로컬 카페",
     availability: "메뉴 확인",
-    position: [58, 60],
+    coordinates: [35.5400014, 129.3416802],
     source: "https://www.diningcode.com/profile.php?rid=hxSvEAINF6cH",
   },
   {
@@ -42,7 +42,7 @@ const smoothieCafes = [
     address: "울산 북구 신기12길 19 1층",
     type: "로컬 카페",
     availability: "메뉴 확인",
-    position: [48, 27],
+    coordinates: [35.6458397, 129.3566135],
     source: "https://www.diningcode.com/profile.php?rid=oHGtSuR7tbDl",
   },
   {
@@ -53,7 +53,7 @@ const smoothieCafes = [
     address: "울산 남구 두왕로190번길 46",
     type: "프랜차이즈",
     availability: "메뉴 확인",
-    position: [39, 77],
+    coordinates: [35.5187081, 129.3145567],
     source: "https://app.passorder.co.kr/normal/b6958519-c904-4154-880f-64751f02e837/menus",
   },
   {
@@ -64,7 +64,7 @@ const smoothieCafes = [
     address: "울산 동구 학문로 53 1층",
     type: "프랜차이즈",
     availability: "메뉴 확인",
-    position: [80, 58],
+    coordinates: [35.5034456, 129.4230967],
     source: "https://app.passorder.co.kr/normal/91e7ea63-642d-473a-91cb-82d50959f5b9/menus",
   },
   {
@@ -75,7 +75,7 @@ const smoothieCafes = [
     address: "울산 남구 중앙로 170-1",
     type: "프랜차이즈",
     availability: "지점별 판매 확인",
-    position: [42, 59],
+    coordinates: [35.5400036, 129.3121208],
     source: "https://www.mega-mgccoffee.com/menu/menu.php",
   },
   {
@@ -86,7 +86,7 @@ const smoothieCafes = [
     address: "울산 남구 팔등로 64-1",
     type: "프랜차이즈",
     availability: "메뉴 확인",
-    position: [34, 54],
+    coordinates: [35.5460976, 129.3157346],
     source: "https://app.passorder.co.kr/normal/57d0b8f3-c9b3-44e9-8dae-91187fff11cc/menus",
   },
   {
@@ -97,7 +97,7 @@ const smoothieCafes = [
     address: "울산 남구 신정로 27",
     type: "프랜차이즈",
     availability: "메뉴 확인",
-    position: [45, 65],
+    coordinates: [35.5363021, 129.3217364],
     source: "https://app.passorder.co.kr/normal/c25c2ad0-3650-4e38-9d1b-31f96ba10282/menus",
   },
   {
@@ -108,7 +108,7 @@ const smoothieCafes = [
     address: "울산 남구 수암로 138 1층 121호",
     type: "프랜차이즈",
     availability: "지점별 판매 확인",
-    position: [36, 68],
+    coordinates: [35.532283, 129.3096975],
     source: "https://paikdabang.com/menu/menu_drink/",
   },
   {
@@ -119,8 +119,74 @@ const smoothieCafes = [
     address: "울산 동구 문현로 41",
     type: "프랜차이즈",
     availability: "메뉴 확인",
-    position: [84, 76],
+    coordinates: [35.4853278, 129.4137998],
     source: "https://app.passorder.co.kr/normal/3bdec681-fa28-4ead-9585-bda2e2904165/menus",
+  },
+  {
+    id: "tenpercent-north",
+    name: "텐퍼센트커피 울산북부경찰서점",
+    menu: "블루베리 요거트 프레치노",
+    price: "4,800원",
+    address: "울산 북구 화산3길 23",
+    type: "프랜차이즈",
+    availability: "메뉴 확인",
+    coordinates: [35.5967771, 129.3715872],
+    source: "https://app.passorder.co.kr/normal/fdb8cdfe-03ff-4cdd-948c-fda76badbd99/menus",
+  },
+  {
+    id: "cafe051-ktx",
+    name: "카페051 울산KTX역점",
+    menu: "블루베리 요거트스무디",
+    price: "4,100원",
+    address: "울산 울주군 언양읍 언양로 104",
+    type: "프랜차이즈",
+    availability: "메뉴 확인",
+    coordinates: [35.5490246, 129.1530014],
+    source: "https://app.passorder.co.kr/normal/4333e279-db96-45f9-a014-19ae658ed48e/menus",
+  },
+  {
+    id: "hasamdong-yaeum",
+    name: "하삼동커피 울산야음점",
+    menu: "블루베리요거트스무디",
+    price: "4,200원",
+    address: "울산 남구 신선로 79",
+    type: "프랜차이즈",
+    availability: "메뉴 확인",
+    coordinates: [35.5226466, 129.3281455],
+    source: "https://app.passorder.co.kr/normal/4980e211-c2eb-4eb3-82f8-9686ce34af5b/menus",
+  },
+  {
+    id: "coffee-natre-seodong",
+    name: "커피나뜨래 울산서동점",
+    menu: "블루베리요거트스무디",
+    price: "4,300원",
+    address: "울산 중구 동천2길 3",
+    type: "프랜차이즈",
+    availability: "메뉴 확인",
+    coordinates: [35.5815246, 129.3467152],
+    source: "https://app.passorder.co.kr/normal/9654cec5-27a2-45e3-87ab-216bf60ae9d1/menus",
+  },
+  {
+    id: "compose-okdong",
+    name: "컴포즈커피 울산옥동점",
+    menu: "블루베리 스무디",
+    price: "3,800원",
+    address: "울산 남구 문수로327번길 4",
+    type: "프랜차이즈",
+    availability: "메뉴 확인",
+    coordinates: [35.5361174, 129.2892673],
+    source: "https://app.passorder.co.kr/normal/673873dc-6a9f-451a-8fc6-93fd5f9af47c/menus",
+  },
+  {
+    id: "hasamdong-gulhwa",
+    name: "하삼동커피 울산굴화점",
+    menu: "블루베리요거트스무디",
+    price: "4,200원",
+    address: "울산 울주군 범서읍 굴화1길 7-11",
+    type: "프랜차이즈",
+    availability: "메뉴 확인",
+    coordinates: [35.556327, 129.2601648],
+    source: "https://app.passorder.co.kr/normal/624210c7-148b-48da-8d23-15cf715250ab/menus",
   },
 ];
 
@@ -324,6 +390,8 @@ const featuredCafeDetails = document.querySelector("#featured-cafe-details");
 const featuredCafeMenu = document.querySelector("#featured-cafe-menu");
 const featuredCafePrice = document.querySelector("#featured-cafe-price");
 const featuredCafeLink = document.querySelector("#featured-cafe-link");
+let smoothieMap;
+const cafeMarkers = new Map();
 
 const companionLabels = {
   solo: "혼자",
@@ -364,7 +432,7 @@ function materializeStops(stops, cafe) {
   return stops.map((stop) => stop.smoothieSlot ? toSmoothieStop(cafe) : stop);
 }
 
-function updateSmoothieCafe(cafe) {
+function updateSmoothieCafe(cafe, moveMap = true) {
   currentSmoothieCafe = cafe;
   selectedCafe.href = cafe.source;
   selectedCafe.setAttribute("aria-label", `${cafe.name} ${cafe.menu} 메뉴 확인`);
@@ -376,40 +444,76 @@ function updateSmoothieCafe(cafe) {
   featuredCafeMenu.textContent = cafe.menu;
   featuredCafePrice.textContent = cafe.price;
   featuredCafeLink.href = cafe.source;
-  cafeMap.querySelectorAll("[data-cafe-id]").forEach((marker) => {
-    const active = marker.dataset.cafeId === cafe.id;
-    marker.classList.toggle("active", active);
-    marker.setAttribute("aria-pressed", String(active));
+  cafeMarkers.forEach((marker, cafeId) => {
+    marker.getElement()?.classList.toggle("active", cafeId === cafe.id);
   });
+  if (moveMap && smoothieMap) smoothieMap.panTo(cafe.coordinates, { animate: true });
+}
+
+function escapeMapText(value) {
+  return String(value).replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;",
+  }[character]));
 }
 
 function renderCafeMap() {
   cafeMapCount.textContent = `${smoothieCafes.length}곳`;
-  cafeMap.innerHTML = `
-    <span class="map-district map-district--north">북구</span>
-    <span class="map-district map-district--center">중구</span>
-    <span class="map-district map-district--south">남구</span>
-    <span class="map-district map-district--east">동구</span>
-    ${smoothieCafes.map((cafe, index) => `
-      <button
-        class="cafe-marker"
-        type="button"
-        role="listitem"
-        data-cafe-id="${cafe.id}"
-        data-cafe-index="${index}"
-        style="--map-x: ${cafe.position[0]}%; --map-y: ${cafe.position[1]}%"
-        aria-label="${cafe.name}, ${cafe.menu}"
-        aria-pressed="false"
-        title="${cafe.name}"
-      >${index + 1}</button>
-    `).join("")}
-  `;
+  if (!window.L) {
+    cafeMap.classList.add("map-unavailable");
+    cafeMap.textContent = "지도를 불러오지 못했습니다. 잠시 후 다시 확인해주세요.";
+    return;
+  }
 
-  cafeMap.querySelectorAll("[data-cafe-index]").forEach((marker) => {
-    marker.addEventListener("click", () => {
-      updateSmoothieCafe(smoothieCafes[Number(marker.dataset.cafeIndex)]);
-    });
+  smoothieMap = L.map(cafeMap, {
+    zoomControl: false,
+    minZoom: 9,
+    maxZoom: 18,
+    scrollWheelZoom: true,
   });
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> contributors',
+  }).addTo(smoothieMap);
+  L.control.zoom({ position: "bottomright" }).addTo(smoothieMap);
+
+  const bounds = [];
+  smoothieCafes.forEach((cafe, index) => {
+    const marker = L.marker(cafe.coordinates, {
+      title: cafe.name,
+      alt: `${cafe.name}, ${cafe.menu}`,
+      keyboard: true,
+      icon: L.divIcon({
+        className: "cafe-map-marker",
+        html: `<span><b>${index + 1}</b></span>`,
+        iconSize: [30, 38],
+        iconAnchor: [15, 38],
+        popupAnchor: [0, -34],
+      }),
+    }).addTo(smoothieMap);
+
+    marker.bindPopup(`
+      <div class="cafe-map-popup">
+        <span>${escapeMapText(cafe.type)} · ${escapeMapText(cafe.availability)}</span>
+        <strong>${escapeMapText(cafe.name)}</strong>
+        <p>${escapeMapText(cafe.menu)} · ${escapeMapText(cafe.price)}</p>
+        <small>${escapeMapText(cafe.address)}</small>
+        <div>
+          <a href="${mapUrl(`울산 ${cafe.name}`)}" target="_blank" rel="noreferrer">실제 지도 보기</a>
+          <a href="${cafe.source}" target="_blank" rel="noreferrer">메뉴 확인</a>
+        </div>
+      </div>
+    `);
+    marker.on("click", () => updateSmoothieCafe(cafe, false));
+    cafeMarkers.set(cafe.id, marker);
+    bounds.push(cafe.coordinates);
+  });
+
+  smoothieMap.fitBounds(bounds, { padding: [28, 28], maxZoom: 11 });
 }
 
 function chooseRandomSmoothieCafe() {
