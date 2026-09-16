@@ -293,8 +293,8 @@ textarea:focus { border-color: var(--aqua); background: white; box-shadow: 0 0 0
 .feature-content a { display: inline-block; margin-top: 18px; color: white; font-size: 0.8rem; font-weight: 700; }
 .feature-content a b { margin-left: 3px; color: #7cdae6; }
 
-.smoothie-place { padding: 25px; color: white; background: linear-gradient(145deg, #4449a5, #686ac4); }
-.smoothie-art { height: 162px; position: relative; }
+.smoothie-place { padding: 0; color: white; background: linear-gradient(145deg, #4449a5, #686ac4); }
+.smoothie-art { display: block; width: 100%; max-width: none; height: 190px; object-fit: cover; object-position: center; margin: 0; }
 .cup { position: absolute; width: 76px; height: 105px; left: 50%; bottom: 6px; border: 3px solid rgba(255,255,255,.8); border-radius: 6px 6px 25px 25px; transform: translateX(-50%) rotate(2deg); background: linear-gradient(180deg, #a9a9ee 0 20%, #6869c4 21% 100%); box-shadow: 0 18px 30px rgba(25, 25, 88, 0.3); }
 .cup::before { content: ""; position: absolute; width: 4px; height: 60px; left: 47px; top: -43px; border-radius: 4px; background: #fff; transform: rotate(7deg); }
 .cup i { position: absolute; width: 70px; height: 15px; left: 0; top: -7px; border-radius: 50%; background: #c9c9f5; }
@@ -305,7 +305,7 @@ textarea:focus { border-color: var(--aqua); background: white; box-shadow: 0 0 0
 .berry-2 { right: 17%; top: 30px; width: 31px; height: 31px; }
 .berry-2::after { left: 11px; top: 4px; }
 .berry-3 { right: 31%; top: 2px; width: 19px; height: 19px; }
-.smoothie-content { position: relative; z-index: 1; }
+.smoothie-content { position: relative; z-index: 1; padding: 22px 25px 25px; }
 .required-badge { display: inline-block; padding: 4px 8px; border-radius: 7px; background: rgba(255,255,255,.15); color: #dde0ff; font-size: 0.67rem; font-weight: 700; }
 .smoothie-content h3 { margin: 7px 0 3px; font-size: 1.45rem; }
 .smoothie-content > p { margin: 0; color: #dfe0fb; font-size: 0.75rem; }
@@ -321,7 +321,9 @@ footer { min-height: 150px; padding: 24px max(24px, calc((100vw - 1180px) / 2));
   .intro-copy { max-width: 650px; }
   .planner-card { max-width: 900px; width: 100%; }
   .place-grid { grid-template-columns: 1fr 1fr; }
-  .smoothie-place { grid-column: 1 / -1; min-height: 320px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
+  .smoothie-place { grid-column: 1 / -1; min-height: 320px; display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+  .smoothie-art { height: 100%; min-height: 320px; }
+  .smoothie-content { align-self: center; padding: 28px; }
 }
 
 @media (max-width: 680px) {
@@ -351,7 +353,9 @@ footer { min-height: 150px; padding: 24px max(24px, calc((100vw - 1180px) / 2));
   .section-heading { align-items: flex-start; flex-direction: column; gap: 12px; }
   .place-grid { grid-template-columns: 1fr; }
   .feature-place { min-height: 330px; }
-  .smoothie-place { grid-column: auto; grid-template-columns: 1fr; min-height: 450px; }
+  .smoothie-place { grid-column: auto; grid-template-columns: 1fr; min-height: 0; }
+  .smoothie-art { height: 220px; min-height: 0; }
+  .smoothie-content { padding: 22px 23px 25px; }
   .footer-full-logo { width: 220px; height: 92px; }
 }
 
