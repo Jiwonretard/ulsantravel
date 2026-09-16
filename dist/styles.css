@@ -109,7 +109,6 @@ h1 em::after {
   transform: rotate(-1deg);
 }
 
-.intro-description { max-width: 440px; margin: 30px 0 0; color: var(--ink-soft); font-size: 1.05rem; word-break: keep-all; }
 .trust-row { display: flex; gap: 18px; margin-top: 34px; color: #52727e; font-size: 0.84rem; font-weight: 600; }
 .trust-row span { display: inline-flex; gap: 7px; align-items: center; }
 .trust-row i { width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; background: var(--mist); color: var(--cyan); font-style: normal; font-size: 0.68rem; }
@@ -139,7 +138,7 @@ h1 em::after {
 .mini-label { margin: 0 0 4px; color: var(--cyan); font: 700 0.67rem/1 "DM Sans", sans-serif; letter-spacing: 0.14em; }
 .planner-heading h2 { margin: 0; font-size: 1.45rem; line-height: 1.35; letter-spacing: -0.04em; }
 .sparkle { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 15px; background: var(--mist); color: var(--cyan); font-size: 1.2rem; }
-.prompt-label, legend, .select-field > span { display: block; margin-bottom: 8px; color: #496774; font-size: 0.8rem; font-weight: 700; }
+legend, .select-field > span { display: block; margin-bottom: 8px; color: #496774; font-size: 0.8rem; font-weight: 700; }
 .prompt-wrap { position: relative; }
 textarea {
   width: 100%;
@@ -194,10 +193,11 @@ textarea:focus { border-color: var(--aqua); background: white; box-shadow: 0 0 0
 .cafe-map { height: 260px; position: relative; overflow: hidden; border: 1px solid rgba(7, 101, 138, .14); border-radius: 12px; background: #dfeff1; }
 .cafe-map.map-unavailable { padding: 28px; display: grid; place-items: center; color: #617b85; background: #eef7f8; font-size: .84rem; text-align: center; }
 .cafe-map-marker { border: 0; background: transparent; }
-.cafe-map-marker span { width: 30px; height: 30px; display: grid; place-items: center; position: relative; border: 3px solid white; border-radius: 50% 50% 50% 8px; color: white; background: var(--blue); box-shadow: 0 4px 12px rgba(8,47,67,.3); transform: rotate(-45deg); font: 800 .7rem/1 "DM Sans", sans-serif; transition: background 150ms ease, box-shadow 150ms ease, transform 150ms ease; }
-.cafe-map-marker span b { color: white; font: inherit; transform: rotate(45deg); }
-.cafe-map-marker.active span { background: var(--blueberry); box-shadow: 0 0 0 5px rgba(79,85,184,.22), 0 5px 14px rgba(31,34,111,.35); transform: rotate(-45deg) scale(1.12); }
+.cafe-map-marker span { width: 18px; height: 18px; display: block; border: 3px solid white; border-radius: 50%; background: var(--blue); box-shadow: 0 3px 10px rgba(8,47,67,.32); transition: background 150ms ease, box-shadow 150ms ease, transform 150ms ease; }
+.cafe-map-marker.active span { background: var(--blueberry); box-shadow: 0 0 0 5px rgba(79,85,184,.22), 0 4px 12px rgba(31,34,111,.35); transform: scale(1.15); }
 .leaflet-marker-icon.cafe-map-marker { display: grid; place-items: center; }
+.cafe-name-label { padding: 5px 8px !important; border: 1px solid #b9d7df !important; border-radius: 8px !important; color: var(--ink) !important; background: rgba(255,255,255,.96) !important; box-shadow: 0 3px 10px rgba(8,47,67,.16); font: 700 .7rem/1.25 "Noto Sans KR", sans-serif !important; white-space: nowrap; }
+.cafe-name-label.active { z-index: 900 !important; color: var(--blueberry) !important; border-color: #aeb2e2 !important; background: #f7f7ff !important; }
 .cafe-map-popup { min-width: 210px; font-family: "Noto Sans KR", sans-serif; }
 .cafe-map-popup > span { color: var(--blueberry); font-size: .7rem; font-weight: 800; }
 .cafe-map-popup strong { margin-top: 3px; display: block; color: var(--ink); font-size: .9rem; }
@@ -256,7 +256,6 @@ textarea:focus { border-color: var(--aqua); background: white; box-shadow: 0 0 0
 .places-section { width: min(1180px, calc(100% - 48px)); margin: 0 auto 140px; }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 34px; }
 .section-heading .eyebrow { margin-bottom: 12px; }
-.section-heading > p { max-width: 400px; margin: 0 0 5px; color: #71868e; font-size: 0.9rem; text-align: right; }
 .place-grid { display: grid; grid-template-columns: 1fr 1fr 0.95fr; gap: 18px; }
 .feature-place, .smoothie-place { min-height: 370px; border-radius: 24px; overflow: hidden; position: relative; }
 .feature-place { padding: 26px; display: flex; align-items: end; color: white; background-size: cover; background-position: center; }
@@ -308,7 +307,6 @@ footer { min-height: 150px; padding: 24px max(24px, calc((100vw - 1180px) / 2));
   .intro { width: calc(100% - 32px); min-height: auto; margin-top: 12px; padding: 30px 0 70px; gap: 38px; }
   .intro::before { width: 260px; height: 260px; right: -100px; top: -30px; }
   h1 { font-size: clamp(2.45rem, 13vw, 3.5rem); }
-  .intro-description { margin-top: 22px; }
   .trust-row { gap: 11px; flex-wrap: wrap; margin-top: 25px; }
   .planner-card { padding: 23px 20px; border-radius: 23px; }
   .planner-card::after { display: none; }
@@ -327,7 +325,6 @@ footer { min-height: 150px; padding: 24px max(24px, calc((100vw - 1180px) / 2));
   .map-link { justify-self: start; }
   .places-section { width: calc(100% - 32px); margin-bottom: 90px; }
   .section-heading { align-items: flex-start; flex-direction: column; gap: 12px; }
-  .section-heading > p { text-align: left; }
   .place-grid { grid-template-columns: 1fr; }
   .feature-place { min-height: 330px; }
   .smoothie-place { grid-column: auto; grid-template-columns: 1fr; min-height: 450px; }

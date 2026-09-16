@@ -39,9 +39,6 @@
       <section class="intro" aria-labelledby="intro-title">
         <div class="intro-copy">
           <h1 id="intro-title">울산 여행 코스<br /><em>만들기</em></h1>
-          <p class="intro-description">
-            원하는 여행을 입력하면 실제 울산 명소로 일정을 추천합니다. 모든 코스에 블루베리 스무디 일정이 포함됩니다.
-          </p>
         </div>
 
         <form class="planner-card" id="planner" aria-labelledby="planner-title">
@@ -51,11 +48,11 @@
             </div>
           </div>
 
-          <label class="prompt-label" for="tripPrompt">원하는 여행</label>
           <div class="prompt-wrap">
             <textarea
               id="tripPrompt"
               name="tripPrompt"
+              aria-label="원하는 여행 입력"
               rows="3"
               placeholder="예: 바다를 보며 천천히 걷고, 사진도 많이 찍고 싶어요"
             ></textarea>
@@ -148,7 +145,6 @@
           <div>
             <h2 id="places-title">추천 장소</h2>
           </div>
-          <p>울산시 관광 정보와 현재 확인 가능한 매장 정보를 바탕으로 구성했어요.</p>
         </div>
         <div class="place-grid">
           <article class="feature-place feature-place--photo">

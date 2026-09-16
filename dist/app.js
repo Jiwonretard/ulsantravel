@@ -71,7 +71,7 @@ const smoothieCafes = [
     id: "mega",
     name: "메가MGC커피 울산달동사거리점",
     menu: "블루베리요거트스무디",
-    price: "가격·판매 확인",
+    price: "3,900원 · 판매 확인",
     address: "울산 남구 중앙로 170-1",
     type: "프랜차이즈",
     availability: "지점별 판매 확인",
@@ -187,6 +187,72 @@ const smoothieCafes = [
     availability: "메뉴 확인",
     coordinates: [35.556327, 129.2601648],
     source: "https://app.passorder.co.kr/normal/624210c7-148b-48da-8d23-15cf715250ab/menus",
+  },
+  {
+    id: "mega-ulsan-university",
+    name: "메가MGC커피 울산대정문점",
+    menu: "블루베리요거트스무디",
+    price: "3,900원",
+    address: "울산 남구 대학로 90-1",
+    type: "프랜차이즈",
+    availability: "메뉴 확인",
+    coordinates: [35.5433186, 129.2599516],
+    source: "https://app.passorder.co.kr/normal/5ed31748-edcb-4e20-8904-d88b12ffeabf/menus",
+  },
+  {
+    id: "mega-daldong-hillstate",
+    name: "메가MGC커피 울산달동힐스테이트점",
+    menu: "블루베리요거트스무디",
+    price: "3,900원",
+    address: "울산 남구 삼산로241번길 13",
+    type: "프랜차이즈",
+    availability: "메뉴 확인",
+    coordinates: [35.5410709, 129.3330689],
+    source: "https://app.passorder.co.kr/normal/be865fe2-021b-4d6a-9eff-f835520f78e7/menus",
+  },
+  {
+    id: "mega-south-library",
+    name: "메가MGC커피 울산남부도서관점",
+    menu: "블루베리요거트스무디",
+    price: "3,900원 · 판매 확인",
+    address: "울산 남구 거마로 16 1층",
+    type: "프랜차이즈",
+    availability: "지점별 판매 확인",
+    coordinates: [35.5364562, 129.2963221],
+    source: "https://www.mega-mgccoffee.com/menu/menu.php",
+  },
+  {
+    id: "mega-mugeo",
+    name: "메가MGC커피 울산무거점",
+    menu: "블루베리요거트스무디",
+    price: "3,900원 · 판매 확인",
+    address: "울산 남구 북부순환도로 11 1층",
+    type: "프랜차이즈",
+    availability: "지점별 판매 확인",
+    coordinates: [35.5527947, 129.2701407],
+    source: "https://www.mega-mgccoffee.com/menu/menu.php",
+  },
+  {
+    id: "mega-flower-rock",
+    name: "메가MGC커피 울산꽃바위점",
+    menu: "블루베리요거트스무디",
+    price: "3,900원 · 판매 확인",
+    address: "울산 동구 화문로 63 101호",
+    type: "프랜차이즈",
+    availability: "지점별 판매 확인",
+    coordinates: [35.4832481, 129.4159051],
+    source: "https://www.mega-mgccoffee.com/menu/menu.php",
+  },
+  {
+    id: "mega-okdong-academy",
+    name: "메가MGC커피 울산옥동학원가점",
+    menu: "블루베리요거트스무디",
+    price: "3,900원 · 판매 확인",
+    address: "울산 남구 문수로344번길 1 1층",
+    type: "프랜차이즈",
+    availability: "지점별 판매 확인",
+    coordinates: [35.5337304, 129.2908282],
+    source: "https://www.mega-mgccoffee.com/menu/menu.php",
   },
 ];
 
@@ -445,7 +511,9 @@ function updateSmoothieCafe(cafe, moveMap = true) {
   featuredCafePrice.textContent = cafe.price;
   featuredCafeLink.href = cafe.source;
   cafeMarkers.forEach((marker, cafeId) => {
-    marker.getElement()?.classList.toggle("active", cafeId === cafe.id);
+    const isActive = cafeId === cafe.id;
+    marker.getElement()?.classList.toggle("active", isActive);
+    marker.getTooltip()?.getElement()?.classList.toggle("active", isActive);
   });
   if (moveMap && smoothieMap) smoothieMap.panTo(cafe.coordinates, { animate: true });
 }
@@ -458,6 +526,15 @@ function escapeMapText(value) {
     '"': "&quot;",
     "'": "&#039;",
   }[character]));
+}
+
+function mapLabelFor(cafe) {
+  return cafe.name
+    .replace(/^메가MGC커피 /, "메가 ")
+    .replace(/^메가커피 /, "메가 ")
+    .replace(/^컴포즈커피 /, "컴포즈 ")
+    .replace(/^하삼동커피 /, "하삼동 ")
+    .replace(/^텐퍼센트커피 /, "텐퍼센트 ");
 }
 
 function renderCafeMap() {
@@ -489,12 +566,29 @@ function renderCafeMap() {
       keyboard: true,
       icon: L.divIcon({
         className: "cafe-map-marker",
-        html: `<span><b>${index + 1}</b></span>`,
-        iconSize: [30, 38],
-        iconAnchor: [15, 38],
-        popupAnchor: [0, -34],
+        html: '<span aria-hidden="true"></span>',
+        iconSize: [18, 18],
+        iconAnchor: [9, 9],
+        popupAnchor: [0, -12],
       }),
     }).addTo(smoothieMap);
+
+    const tooltipDirections = ["top", "right", "left", "bottom"];
+    const tooltipDirection = tooltipDirections[index % tooltipDirections.length];
+    const tooltipOffsets = {
+      top: [0, -12],
+      right: [12, 0],
+      left: [-12, 0],
+      bottom: [0, 12],
+    };
+    marker.bindTooltip(escapeMapText(mapLabelFor(cafe)), {
+      permanent: true,
+      direction: tooltipDirection,
+      offset: tooltipOffsets[tooltipDirection],
+      opacity: 0.95,
+      className: "cafe-name-label",
+      interactive: true,
+    });
 
     marker.bindPopup(`
       <div class="cafe-map-popup">
